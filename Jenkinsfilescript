@@ -12,7 +12,7 @@ node{
    // writeFile file: 'abc.sh', text: 'ls -lrt'
    // sshScript remote: remote, script: "Jenkinsfilescript.sh"
     sshCommand remote : remote, command: "pwd"
-    sshCommand remote : remote, command:  mkdir "Jenkinsfilescript"
+    sshCommand remote : remote, command:  mkdir "Hari16008"
       sshCommand remote : remote, command: "cd /opc/home"
     sshCommand remote : remote, command: "pwd"
       sshCommand remote : remote, command: "ls -lrt"
@@ -22,7 +22,7 @@ node{
   }  
  stage('Remote SSH 3') {
     writeFile file: 'Jenkinsfilescript.sh', text: 'ls -lrt'
-    sshPut remote: remote, from: 'Jenkinsfilescript.sh', into: '/home/Jenkinsfilescript.sh'
+    sshPut remote: remote, from: 'Jenkinsfilescript.sh', into: '/home/opc/Hari16008'
   }
 }
         }
