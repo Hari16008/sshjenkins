@@ -9,7 +9,7 @@ node{
            checkout scm
   }  
   stage('Remote SSH') {
-   // writeFile file: 'abc.sh', text: 'ls -lrt'
+   // writeFile file: 'Jenkinsfilescript.sh', text: 'ls -lrt'
    // sshScript remote: remote, script: "Jenkinsfilescript.sh"
     sshCommand remote : remote, command: "pwd"
     sshCommand remote : remote, command:  mkdir "Hari16008"
@@ -17,12 +17,18 @@ node{
     sshCommand remote : remote, command: "pwd"
       sshCommand remote : remote, command: "ls -lrt"
   }     
-  stage('Remote SSH 2') {
-   sshScript remote: remote, script: "/home/opc/jenkinsfilescript.sh"
   }  
- stage('Remote SSH 3') {
-    writeFile file: 'Jenkinsfilescript.sh', text: 'ls -lrt'
-    sshPut remote: remote, from: 'Jenkinsfilescript.sh', into: '/home/opc/Hari16008'
-  }
+ stage('step1'){
+  sshPut remote: remote, from: 'Jenkinsfilescript.sh', into: '/home/opc'
+ }
+  stage('step2'){
+ sshCommand remote: remote, command: "sudo sh /home/opc/Jenkinsfilescript.sh"
+ }
+  stage('step2'){
+ sshCommand remote: remote, command: "pwd"
+ }
+  stage('step3'){
+ sshCommand remote: remote, command: "mv /home/opc/Jenkinsfilescript.sh  /home/opc/Hari16008/"
+ }
 }
         }
