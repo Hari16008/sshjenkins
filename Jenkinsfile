@@ -7,26 +7,17 @@ node{
   remote.allowAnyHosts = true
     stage('checkout') {
            checkout scm
-  }  
-  stage('Remote SSH') {
-   // writeFile file: 'Jenkinsfilescript.sh', text: 'ls -lrt'
-   // sshScript remote: remote, script: "Jenkinsfilescript.sh"
-    sshCommand remote : remote, command: "pwd"
-    sshCommand remote : remote, command:  mkdir "Hari16008"
-      sshCommand remote : remote, command: "cd /opc/home"
-    sshCommand remote : remote, command: "pwd"
-      sshCommand remote : remote, command: "ls -lrt"
-  }       
+  }         
  stage('step1'){
-  sshPut remote: remote, from: 'Jenkinsfilescript.sh', into: '/home/opc'
+  sshPut remote: remote, from: 'Hari16008.sh', into: '/home/opc'
  }
   stage('step2'){
- sshCommand remote: remote, command: "sudo sh /home/opc/Jenkinsfilescript.sh"
+ sshCommand remote: remote, command: "sudo sh /home/opc/Hari16008.sh"
  }
   stage('step2'){
  sshCommand remote: remote, command: "pwd"
  }
   stage('step3'){
- sshCommand remote: remote, command: "mv /home/opc/Jenkinsfilescript.sh  /home/opc/Hari16008/"
+ sshRemove remote: remote, path: "/home/opc/Hari16008.sh"
  }
- }
+}
