@@ -16,8 +16,7 @@ node{
       sshCommand remote : remote, command: "cd /opc/home"
     sshCommand remote : remote, command: "pwd"
       sshCommand remote : remote, command: "ls -lrt"
-  }     
-  }  
+  }       
  stage('step1'){
   sshPut remote: remote, from: 'Jenkinsfilescript.sh', into: '/home/opc'
  }
@@ -30,5 +29,4 @@ node{
   stage('step3'){
  sshCommand remote: remote, command: "mv /home/opc/Jenkinsfilescript.sh  /home/opc/Hari16008/"
  }
-}
-        }
+ }
