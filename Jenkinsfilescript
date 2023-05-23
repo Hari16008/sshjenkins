@@ -18,11 +18,11 @@ node{
       sshCommand remote : remote, command: "ls -lrt"
   }     
   stage('Remote SSH 2') {
-   sshScript remote: remote, script: "./home/jenkinsfilescript.sh"
+   sshScript remote: remote, script: "/home/opc/jenkinsfilescript.sh"
   }  
  stage('Remote SSH 3') {
     writeFile file: 'Jenkinsfilescript.sh', text: 'ls -lrt'
-    sshPut remote: remote, from: 'Jenkinsfilescript.sh', into: './home/Jenkinsfilescript.sh'
+    sshPut remote: remote, from: 'Jenkinsfilescript.sh', into: '/home/Jenkinsfilescript.sh'
   }
 }
         }
