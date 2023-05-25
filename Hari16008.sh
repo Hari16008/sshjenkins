@@ -1,6 +1,7 @@
 #!/bin/sh
 
 echo "microcare"
+echo "newtask"
 
 cd /home/opc
 
